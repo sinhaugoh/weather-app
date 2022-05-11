@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { useEffect, useState } from "react";
 import * as Location from "expo-location";
 
@@ -46,7 +46,11 @@ export default function App() {
     // success
     return (
       <View style={styles.container}>
-        <Text>{JSON.stringify(location)}</Text>
+        <Image 
+          source={{uri: `http://openweathermap.org/img/wn/${location.weather[0].icon}@2x.png`}}
+          style={{width: 150, height: 150}}
+        />
+        <Text>{location.name}</Text>
         <StatusBar style="auto" />
       </View>
     );
@@ -64,7 +68,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#999",
     alignItems: "center",
     justifyContent: "center",
   },
